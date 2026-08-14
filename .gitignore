@@ -1,0 +1,17 @@
+# Raw media — too large for GitHub (700MB+)
+media_raw/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Netlify CLI
+.netlify/
+
+# Editor
+.vscode/
+.idea/

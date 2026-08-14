@@ -1,0 +1,6 @@
+# Raw source files — never deploy these
+media_raw/
+
+# Temp/scratch files
+*.DS_Store
+*.log

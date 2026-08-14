@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us &mdash; Buns On Fire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Jost:wght@200;300;400;500;600&family=Barlow+Condensed:wght@300;400;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#050C0F;--dark:#08141A;--surface:#0C1C22;--cyan:#1EC8E8;--cyan-dim:#0C8FA8;--amber:#E8A018;--white:#E8F6FA;--cream:#A8C8D2;--mist:#4A7A88;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",-apple-system,sans-serif;--cond:"Barlow Condensed",sans-serif;--cursive:"Dancing Script",cursive;--ease:cubic-bezier(0.16,1,0.3,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--sans);font-weight:300;min-height:100vh;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{background:var(--cyan-dim)}
+
+nav{position:sticky;top:0;z-index:100;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(5,12,15,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(30,200,232,0.1);}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--white)}
+.nav-back{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:8px;transition:gap 0.25s var(--ease);}
+.nav-back:hover{gap:14px}
+
+.contact-hero{padding:80px 52px 60px;max-width:1100px;margin:0 auto;}
+.eyebrow{font-family:var(--cond);font-size:11px;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;}
+.contact-hero h1{font-family:var(--serif);font-size:clamp(52px,8vw,100px);font-weight:700;line-height:0.92;letter-spacing:-0.02em;color:var(--white);margin-bottom:20px;}
+.contact-hero p{font-size:17px;line-height:1.8;color:var(--mist);max-width:500px;}
+
+/* Location grid — 3 cols */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(30,200,232,0.07);max-width:1100px;margin:0 auto 1px;}
+.contact-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(30,200,232,0.07);max-width:1100px;margin:0 auto 80px;}
+.c-card{background:var(--dark);padding:44px 36px;transition:background 0.25s;}
+.c-card:hover{background:var(--surface)}
+.c-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+.c-title{font-family:var(--serif);font-size:clamp(22px,2.5vw,30px);font-weight:700;color:var(--white);margin-bottom:22px;line-height:1.1;}
+.c-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.c-icon{width:30px;height:30px;border-radius:50%;background:rgba(30,200,232,0.08);border:1px solid rgba(30,200,232,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.c-info h4{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--mist);margin-bottom:6px;}
+.c-info a,.c-info p{font-size:14px;color:var(--cream);line-height:1.65;display:block;transition:color 0.2s;}
+.c-info a:hover{color:var(--cyan)}
+.loc-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;}
+.loc-link{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);transition:color 0.2s;}
+.loc-link:hover{color:var(--cyan)}
+.loc-link.amber{color:var(--amber)}
+.loc-link.amber:hover{color:#ffb830}
+.divider{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(30,200,232,0.15),transparent);margin:0 auto 72px;max-width:1100px;}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.soc-btn{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);border:1px solid rgba(30,200,232,0.1);padding:8px 14px;border-radius:2px;transition:all 0.25s;}
+.soc-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.btn-order{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--night);background:var(--cyan);padding:10px 20px;border-radius:2px;display:inline-block;transition:all 0.3s;}
+.btn-order:hover{background:#00E5FF}
+.btn-order.amber-btn{background:var(--amber);}
+
+/* Form area */
+.form-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(30,200,232,0.07);margin-bottom:0;}
+.form-left{background:var(--dark);padding:52px 44px;}
+.form-right{background:var(--surface);padding:52px 44px;}
+.cf-form{display:flex;flex-direction:column;gap:14px;}
+.cf-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(30,200,232,0.15);border-radius:4px;padding:12px 14px;font-family:var(--sans);font-size:14px;color:var(--white);outline:none;transition:border-color 0.2s;}
+.cf-input:focus{border-color:rgba(30,200,232,0.5);}
+.cf-input::placeholder{color:var(--mist);}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cf-submit{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--night);background:var(--cyan);border:none;padding:14px 28px;cursor:pointer;transition:all 0.3s;width:100%;}
+.cf-submit:hover{background:#00E5FF;box-shadow:0 0 24px rgba(30,200,232,0.35);}
+
+/* Order CTA */
+.order-cta{max-width:1100px;margin:0 auto 0;padding:60px 52px;background:var(--surface);border-top:1px solid rgba(30,200,232,0.08);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.order-cta h2{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--white);}
+.order-cta h2 em{font-style:italic;color:var(--cyan);text-shadow:0 0 20px rgba(30,200,232,0.4);}
+.order-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.c-foot{text-align:center;padding:28px;font-family:var(--cond);font-size:11px;letter-spacing:0.12em;color:rgba(74,122,136,0.4);border-top:1px solid rgba(30,200,232,0.06);}
+
+/* ── Accordion location cards ── */
+.acc-wrap{max-width:1100px;margin:0 auto 1px;display:flex;flex-direction:column;gap:1px;background:rgba(30,200,232,0.07);}
+.acc-card{background:var(--dark);transition:background 0.25s;}
+.acc-card:hover{background:var(--surface)}
+.acc-header{display:flex;align-items:center;justify-content:space-between;padding:28px 36px;cursor:pointer;user-select:none;gap:16px;}
+.acc-header-left{display:flex;align-items:center;gap:20px;}
+.acc-num{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);}
+.acc-name{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);font-weight:700;color:var(--white);line-height:1.1;}
+.acc-sub{font-family:var(--cond);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);margin-top:4px;}
+.acc-chevron{width:32px;height:32px;border-radius:50%;border:1px solid rgba(30,200,232,0.15);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:14px;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),background 0.2s;flex-shrink:0;}
+.acc-card.open .acc-chevron{transform:rotate(180deg);background:rgba(30,200,232,0.1);}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s cubic-bezier(0.16,1,0.3,1);}
+.acc-card.open .acc-body{grid-template-rows:1fr;}
+.acc-inner{overflow:hidden;}
+.acc-content{padding:0 36px 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:700px){.acc-content{grid-template-columns:1fr;gap:16px;}.acc-header{padding:22px 20px;}.acc-content{padding:0 20px 24px;}}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .contact-hero{padding:56px 24px 40px}
+  .contact-grid,.contact-grid-2,.form-wrap{grid-template-columns:1fr}
+  .c-card,.form-left,.form-right{padding:32px 24px}
+  .order-cta{padding:40px 24px;flex-direction:column;align-items:flex-start}
+  .cf-row{grid-template-columns:1fr}
+}
+</style>
+
+<!-- Google Analytics 4 — replace G-8WTPST1MK3 with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8WTPST1MK3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8WTPST1MK3', { send_page_view: true });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    function gaEvent(n,p){if(typeof gtag==='function')gtag('event',n,p);}
+
+    // Order button clicks
+    document.querySelectorAll('a[href*="toasttab"],a[href*="toast.app"]').forEach(function(el){
+      el.addEventListener('click',function(){
+        gaEvent('order_click',{event_category:'engagement',event_label:el.textContent.trim()});
+      });
+    });
+
+    // Directions clicks
+    document.querySelectorAll('a[href*="maps.google"]').forEach(function(el){
+      el.addEventListener('click',function(){
+        gaEvent('directions_click',{event_category:'engagement',event_label:el.href});
+      });
+    });
+
+    // Accordion location opens
+    document.querySelectorAll('.acc-header').forEach(function(hdr){
+      hdr.addEventListener('click',function(){
+        var name = hdr.querySelector('.acc-name');
+        gaEvent('location_expand',{event_category:'locations',event_label:name?name.textContent.trim():'location'});
+      });
+    });
+
+    // Contact form submission
+    var form = document.querySelector('form[name="contact"]');
+    if(form) form.addEventListener('submit',function(){
+      gaEvent('contact_form_submit',{event_category:'leads',event_label:'contact_form'});
+    });
+
+    // Franchise email click
+    document.querySelectorAll('a[href*="growth@"]').forEach(function(el){
+      el.addEventListener('click',function(){
+        gaEvent('franchise_inquiry',{event_category:'leads',event_label:'contact_page'});
+      });
+    });
+  });
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">&#8592;&nbsp; Back to Home</a>
+  <a href="index.html" class="nav-logo" style="position:absolute;left:50%;transform:translateX(-50%);"><img src="https://i.postimg.cc/RZPS4sf0/BOFLOGOSPDF.png" alt="Buns On Fire" style="height:52px;width:auto;display:block;"></a>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="https://www.toasttab.com/local/order/buns-on-fire-glendale-heights-258-town-center-lane" target="_blank" class="btn-order" style="font-size:10px;padding:8px 16px;">Glendale Heights</a>
+    <a href="https://www.toasttab.com/local/order/buns-on-fire-466-west-half-day-road" target="_blank" class="btn-order" style="font-size:10px;padding:8px 16px;">Buffalo Grove</a>
+    <a href="https://toast.app/r/buns-on-fire-brookfield-17395-w-bluemound-rd/order?diningOption=pickup&utm_source=toast.app" target="_blank" class="btn-order" style="font-size:10px;padding:8px 16px;">Brookfield, WI</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="contact-hero">
+  <p class="eyebrow">Get In Touch</p>
+  <h1>Contact<br>Us.</h1>
+  <p>We&rsquo;re here for questions, partnerships, franchise inquiries, and anything in between.</p>
+</div>
+
+<!-- Accordion location cards -->
+<div class="acc-wrap">
+
+  <!-- Glendale Heights -->
+  <div class="acc-card" id="acc-1">
+    <div class="acc-header" onclick="toggleAcc('acc-1')">
+      <div class="acc-header-left">
+        <div>
+          <div class="acc-num">Location 01</div>
+          <div class="acc-name">Glendale Heights</div>
+          <div class="acc-sub">258 Town Center Lane &middot; Glendale Heights, IL</div>
+        </div>
+      </div>
+      <div class="acc-chevron">&#8964;</div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-inner">
+        <div class="acc-content">
+          <div class="c-item" style="margin:0">
+            <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="c-info"><h4>Hours</h4><p>Sun &ndash; Thu: 11am &ndash; 10pm</p><p>Fri &ndash; Sat: 12pm &ndash; 12am</p></div>
+          </div>
+          <div class="c-item" style="margin:0">
+            <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0015.09 17.91l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 19z"/></svg></div>
+            <div class="c-info"><h4>Phone</h4><a href="tel:6306141010">(630) 614-1010</a></div>
+          </div>
+          <div class="loc-links" style="margin:0;align-self:center;">
+            <a href="https://maps.google.com/?q=258+Town+Center+Ln+Glendale+Heights+IL" target="_blank" class="loc-link">Directions &rarr;</a>
+            <a href="https://www.toasttab.com/local/order/buns-on-fire-glendale-heights-258-town-center-lane" target="_blank" class="loc-link amber">Order Online &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buffalo Grove -->
+  <div class="acc-card" id="acc-2">
+    <div class="acc-header" onclick="toggleAcc('acc-2')">
+      <div class="acc-header-left">
+        <div>
+          <div class="acc-num">Location 02</div>
+          <div class="acc-name">Buffalo Grove</div>
+          <div class="acc-sub">466 W Half Day Road &middot; Buffalo Grove, IL</div>
+        </div>
+      </div>
+      <div class="acc-chevron">&#8964;</div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-inner">
+        <div class="acc-content">
+          <div class="c-item" style="margin:0">
+            <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="c-info"><h4>Hours</h4><p>Mon / Wed &ndash; Thu: 11am &ndash; 9pm</p><p>Fri &ndash; Sat: 11am &ndash; 10pm</p><p>Sunday: 11am &ndash; 9pm</p><p style="color:#ef4444;font-weight:500;">Tuesday: Closed</p></div>
+          </div>
+          <div class="c-item" style="margin:0">
+            <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0015.09 17.91l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 19z"/></svg></div>
+            <div class="c-info"><h4>Phone</h4><a href="tel:6308540100">(630) 854-0100</a></div>
+          </div>
+          <div class="loc-links" style="margin:0;align-self:center;">
+            <a href="https://maps.google.com/?q=466+W+Half+Day+Rd+Buffalo+Grove+IL" target="_blank" class="loc-link">Directions &rarr;</a>
+            <a href="https://www.toasttab.com/local/order/buns-on-fire-466-west-half-day-road" target="_blank" class="loc-link amber">Order Online &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brookfield -->
+  <div class="acc-card" id="acc-3">
+    <div class="acc-header" onclick="toggleAcc('acc-3')">
+      <div class="acc-header-left">
+        <div>
+          <div class="acc-num">Location 03</div>
+          <div class="acc-name">Brookfield, WI</div>
+          <div class="acc-sub">17395 W Bluemound Rd &middot; Brookfield, WI 53045</div>
+        </div>
+      </div>
+      <div class="acc-chevron">&#8964;</div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-inner">
+        <div class="acc-content">
+          <div class="c-item" style="margin:0">
+            <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="c-info"><h4>Hours</h4><p>Sun &ndash; Thu: 11am &ndash; 9pm</p><p>Fri &ndash; Sat: 11am &ndash; 10pm</p></div>
+          </div>
+          <div class="c-item" style="margin:0">
+            <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91A16 16 0 0015.09 17.91l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 19z"/></svg></div>
+            <div class="c-info"><h4>Phone</h4><a href="tel:2623722750">(262) 372-2750</a></div>
+          </div>
+          <div class="loc-links" style="margin:0;align-self:center;">
+            <a href="https://maps.google.com/?q=17395+W+Bluemound+Rd+Brookfield+WI" target="_blank" class="loc-link">Directions &rarr;</a>
+            <a href="https://toast.app/r/buns-on-fire-brookfield-17395-w-bluemound-rd/order?diningOption=pickup&utm_source=toast.app" target="_blank" class="loc-link amber">Order Online &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- General + Franchise -->
+<div class="contact-grid-2">
+  <div class="c-card">
+    <p class="c-label">General</p>
+    <h2 class="c-title">Management &amp;<br>Operations</h2>
+    <div class="c-item">
+      <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1EC8E8" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="c-info"><h4>Email</h4><a href="mailto:management@bunsonfire.com">management@bunsonfire.com</a><a href="mailto:operations@bunsonfire.com" style="margin-top:4px;">operations@bunsonfire.com</a><p style="font-size:13px;color:var(--mist);margin-top:6px">For general questions, operations, and customer feedback.</p></div>
+    </div>
+    <div class="social-row">
+      <a href="https://instagram.com/bunsonfire" target="_blank" class="soc-btn">Instagram</a>
+      <a href="https://tiktok.com/@bunsonfire" target="_blank" class="soc-btn">TikTok</a>
+      <a href="https://facebook.com/bunsonfire" target="_blank" class="soc-btn">Facebook</a>
+    </div>
+  </div>
+  <div class="c-card">
+    <p class="c-label">Franchise</p>
+    <h2 class="c-title">Growth &amp;<br>Partnerships</h2>
+    <div class="c-item">
+      <div class="c-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8A018" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="c-info"><h4>Franchise Email</h4><a href="mailto:growth@bunsonfire.com" style="color:var(--amber)">growth@bunsonfire.com</a><p style="font-size:13px;color:var(--mist);margin-top:6px">Interested in opening a Buns On Fire location? Let&rsquo;s talk.</p></div>
+    </div>
+    <a href="mailto:growth@bunsonfire.com" class="btn-order amber-btn" style="display:inline-block;margin-top:16px;">Start the Conversation</a>
+  </div>
+</div>
+
+<!-- Contact Form -->
+<div class="form-wrap">
+  <div class="form-left">
+    <p class="eyebrow" style="margin-bottom:16px">Send a Message</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.1;">We&rsquo;d love<br>to hear from you.</h2>
+    <p style="font-size:15px;color:var(--mist);line-height:1.75;">Questions, catering, or franchise opportunities &mdash; drop us a message and we&rsquo;ll get back to you within 24 hours.</p>
+  </div>
+  <div class="form-right">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cf-form">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none;"><input name="bot-field"></p>
+      <div class="cf-row">
+        <input type="text" name="first_name" required placeholder="First Name" class="cf-input">
+        <input type="text" name="last_name" required placeholder="Last Name" class="cf-input">
+      </div>
+      <input type="email" name="email" required placeholder="Email Address" class="cf-input">
+      <select name="enquiry_type" class="cf-input" style="cursor:pointer;background:var(--dark);">
+        <option value="general">General Enquiry</option>
+        <option value="franchise">Franchise / Partnership</option>
+        <option value="catering">Catering</option>
+        <option value="feedback">Feedback</option>
+        <option value="media">Media / Press</option>
+      </select>
+      <textarea name="message" required rows="4" placeholder="Your message..." class="cf-input" style="resize:vertical;"></textarea>
+      <button type="submit" class="cf-submit">Send Message &rarr;</button>
+    </form>
+  </div>
+</div>
+
+<!-- Order CTA -->
+<div class="order-cta">
+  <div>
+    <h2>Ready to order?<br><em>We&rsquo;re ready.</em></h2>
+  </div>
+  <div class="order-btns">
+    <a href="https://www.toasttab.com/local/order/buns-on-fire-glendale-heights-258-town-center-lane" target="_blank" class="btn-order">Glendale Heights</a>
+    <a href="https://www.toasttab.com/local/order/buns-on-fire-466-west-half-day-road" target="_blank" class="btn-order">Buffalo Grove</a>
+    <a href="https://toast.app/r/buns-on-fire-brookfield-17395-w-bluemound-rd/order?diningOption=pickup&utm_source=toast.app" target="_blank" class="btn-order">Brookfield, WI</a>
+    <a href="index.html" class="btn-order" style="background:transparent;color:var(--cyan);border:1px solid rgba(30,200,232,0.3);">&larr; Back to Home</a>
+  </div>
+</div>
+
+<div class="c-foot">
+  &copy; 2026 Buns On Fire &nbsp;&middot;&nbsp; Illinois &nbsp;&middot;&nbsp; Wisconsin
+</div>
+
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function toggleAcc(id) {
+  const card = document.getElementById(id);
+  const isOpen = card.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.acc-card').forEach(c => c.classList.remove('open'));
+  // Open clicked if it was closed
+  if (!isOpen) card.classList.add('open');
+}
+// Open first by default
+document.getElementById('acc-1').classList.add('open');
+</script>
+</body>
+</html>
