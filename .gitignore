@@ -1,6 +1,9 @@
 # Raw media — too large for GitHub (700MB+)
 media_raw/
 
+# Incomplete ffmpeg output files
+media_web/*_opt.mp4
+
 # macOS
 .DS_Store
 **/.DS_Store
