@@ -63,10 +63,10 @@ img{display:block;max-width:100%}
 .nav-order:hover,.nav-order-wrap:hover .nav-order{background:var(--cyan-glow);box-shadow:0 0 18px rgba(30,200,232,0.4);}
 .nav-order-arrow{font-size:9px;transition:transform 0.3s}
 .nav-order-wrap:hover .nav-order-arrow{transform:rotate(180deg)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--dark);border:1px solid rgba(30,200,232,0.15);border-radius:2px;min-width:260px;width:max-content;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity 0.25s var(--ease),transform 0.25s var(--ease);box-shadow:0 16px 40px rgba(0,0,0,0.5);z-index:200;}
+.nav-dropdown{position:absolute;bottom:calc(100% + 8px);top:auto;left:0;right:auto;background:var(--dark);border:1px solid rgba(30,200,232,0.15);border-radius:2px;min-width:260px;width:max-content;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity 0.25s var(--ease),transform 0.25s var(--ease);box-shadow:0 -8px 40px rgba(0,0,0,0.5);z-index:200;}
 .nav-order-wrap:hover .nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0)}
 /* Hero section dropdown opens to the right, not left */
-.hero-btns .nav-dropdown{right:auto;left:0;}
+.hero-btns .nav-dropdown{bottom:calc(100% + 8px);top:auto;}
 .nav-dropdown a{display:block;padding:14px 20px;font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);border-bottom:1px solid rgba(30,200,232,0.08);transition:all 0.2s;white-space:nowrap;}
 .nav-dropdown a:last-child{border-bottom:none}
 .nav-dropdown a:hover{background:rgba(30,200,232,0.08);color:var(--cyan);padding-left:24px;}
