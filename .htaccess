@@ -44,17 +44,9 @@ Options -Indexes
   Deny from all
 </FilesMatch>
 
-# ── Protect deploy.php — only GitHub IPs ──
-# GitHub webhook IPs (hooks.github.com range)
-<Files "deploy.php">
-  Order Deny,Allow
-  Deny from all
-  # GitHub Meta API IPs for webhooks
-  Allow from 140.82.112.0/20
-  Allow from 185.199.108.0/22
-  Allow from 192.30.252.0/22
-  Allow from 143.55.64.0/20
-</Files>
+# ── deploy.php — open to all IPs, secured by HMAC signature in PHP ──
+# (IP allowlists are unreliable as GitHub rotates ranges; the SHA-256
+#  HMAC check inside deploy.php is the real security layer)
 
 # ── Block Common Attack Patterns ───────────
 <IfModule mod_rewrite.c>
@@ -72,8 +64,10 @@ Options -Indexes
   RewriteCond %{QUERY_STRING} (;|%3B).*(exec|system|passthru|popen|proc_open|shell_exec) [NC]
   RewriteRule .* - [F,L]
 
-  # Block suspicious user agents (bots/scanners)
+  # Block suspicious user agents (bots/scanners) — exclude deploy.php so GitHub webhook works
+  RewriteCond %{REQUEST_URI} !^/deploy\.php$ [NC]
   RewriteCond %{HTTP_USER_AGENT} (havij|sqlmap|nikto|nessus|masscan|nmap|zgrab) [NC,OR]
+  RewriteCond %{REQUEST_URI} !^/deploy\.php$ [NC]
   RewriteCond %{HTTP_USER_AGENT} (python-requests|go-http-client|curl) [NC]
   RewriteRule .* - [F,L]
 
