@@ -36,6 +36,7 @@ exec("cd {$repo} && git pull origin main >> {$log} 2>&1");
 
 exec("/bin/cp {$repo}/index.html {$pub}/");
 exec("/bin/cp {$repo}/contact.html {$pub}/");
+exec("/bin/cp {$repo}/order.html {$pub}/");
 exec("/bin/cp -r {$repo}/assets {$pub}/");
 exec("/bin/cp -r {$repo}/media_web {$pub}/");
 

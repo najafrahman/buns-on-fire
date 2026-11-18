@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order — Buns On Fire</title>
+<meta name="description" content="Order Buns On Fire online. Pick up directly or get delivery via DoorDash, Uber Eats, or Grubhub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --night:#050C0F;--dark:#08141A;--surface:#0C1C22;
+    --cyan:#1EC8E8;--amber:#E8A018;
+    --white:#E8F6FA;--cream:#A8C8D2;--mist:#4A7A88;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Jost',-apple-system,sans-serif;
+    --cond:'Barlow Condensed',sans-serif;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+  html,body{min-height:100%;background:var(--night);color:var(--white);font-family:var(--sans);}
+
+  /* ── Page layout ── */
+  .page{min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:48px 20px 64px;}
+
+  /* ── Header ── */
+  .logo-wrap{margin-bottom:10px;}
+  .logo-wrap img{height:64px;width:auto;display:block;}
+  .tagline{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--amber);margin-bottom:40px;text-align:center;}
+
+  /* ── Notice banner ── */
+  .notice{
+    width:100%;max-width:480px;
+    background:rgba(232,160,24,0.08);
+    border:1px solid rgba(232,160,24,0.3);
+    border-radius:10px;
+    padding:14px 18px;
+    margin-bottom:36px;
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .notice-icon{font-size:18px;line-height:1;flex-shrink:0;margin-top:1px;}
+  .notice p{font-size:12px;line-height:1.65;color:var(--cream);}
+  .notice strong{color:var(--amber);}
+
+  /* ── Section label ── */
+  .section-label{
+    width:100%;max-width:480px;
+    font-family:var(--cond);font-size:10px;font-weight:700;
+    letter-spacing:0.3em;text-transform:uppercase;color:var(--mist);
+    margin-bottom:12px;padding-left:2px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .section-label::after{content:'';flex:1;height:1px;background:rgba(74,122,136,0.25);}
+
+  /* ── Location group ── */
+  .location-group{width:100%;max-width:480px;margin-bottom:32px;}
+  .loc-name{
+    font-family:var(--serif);font-size:22px;font-weight:700;
+    color:var(--white);margin-bottom:4px;
+  }
+  .loc-addr{font-size:11px;color:var(--mist);letter-spacing:0.05em;margin-bottom:14px;}
+
+  /* ── Link buttons ── */
+  .link-btn{
+    display:flex;align-items:center;gap:14px;
+    width:100%;padding:15px 20px;margin-bottom:10px;
+    background:var(--surface);border:1px solid rgba(30,200,232,0.1);
+    border-radius:10px;text-decoration:none;color:var(--white);
+    transition:background 0.2s,border-color 0.2s,transform 0.2s var(--ease);
+    position:relative;overflow:hidden;
+  }
+  .link-btn:hover{background:rgba(30,200,232,0.07);border-color:rgba(30,200,232,0.3);transform:translateY(-2px);}
+  .link-btn:active{transform:translateY(0);}
+
+  .btn-icon{
+    width:38px;height:38px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-size:18px;
+  }
+  .btn-icon.toast{background:rgba(255,100,50,0.15);}
+  .btn-icon.doordash{background:rgba(255,60,0,0.12);}
+  .btn-icon.uber{background:rgba(30,200,232,0.1);}
+  .btn-icon.grubhub{background:rgba(240,80,30,0.12);}
+
+  .btn-text{flex:1;}
+  .btn-title{font-size:14px;font-weight:600;display:block;margin-bottom:2px;}
+  .btn-sub{font-size:11px;color:var(--mist);}
+
+  .btn-badge{
+    font-family:var(--cond);font-size:9px;font-weight:700;
+    letter-spacing:0.15em;text-transform:uppercase;
+    padding:3px 8px;border-radius:20px;
+  }
+  .badge-best{background:rgba(30,200,232,0.15);color:var(--cyan);}
+  .badge-fee{background:rgba(232,160,24,0.12);color:var(--amber);}
+
+  .btn-arrow{color:var(--mist);font-size:14px;margin-left:4px;}
+
+  /* ── Divider ── */
+  .divider{width:100%;max-width:480px;height:1px;background:rgba(74,122,136,0.15);margin:4px 0 32px;}
+
+  /* ── Footer ── */
+  .back-link{
+    margin-top:16px;font-size:12px;color:var(--mist);
+    text-decoration:none;letter-spacing:0.08em;
+    transition:color 0.2s;
+  }
+  .back-link:hover{color:var(--cyan);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-wrap">
+    <img src="https://i.postimg.cc/RZPS4sf0/BOFLOGOSPDF.png" alt="Buns On Fire">
+  </div>
+  <p class="tagline">Smash Burgers · Hot Chicken · Rice Bowls · Wings · Boba</p>
+
+  <!-- Notice -->
+  <div class="notice">
+    <span class="notice-icon">💡</span>
+    <p><strong>Order direct & save.</strong> Ordering through Toast (our website) means no extra fees or commissions — you get the best price and we keep more of every dollar. Third-party apps like DoorDash, Uber Eats, and Grubhub charge additional service fees and delivery fees that can add 15–30% to your order.</p>
+  </div>
+
+  <!-- GLENDALE HEIGHTS -->
+  <p class="section-label">Glendale Heights, IL</p>
+  <div class="location-group">
+    <p class="loc-name">Glendale Heights</p>
+    <p class="loc-addr">258 Town Center Lane, Glendale Heights, IL · (630) 614-1010</p>
+
+    <a class="link-btn" href="https://www.toasttab.com/local/order/buns-on-fire-glendale-heights-258-town-center-lane" target="_blank">
+      <span class="btn-icon toast">🔥</span>
+      <span class="btn-text">
+        <span class="btn-title">Order Pickup — Toast</span>
+        <span class="btn-sub">Direct from us · No extra fees</span>
+      </span>
+      <span class="btn-badge badge-best">Best Value</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.doordash.com/search/store/buns+on+fire+glendale+heights" target="_blank">
+      <span class="btn-icon doordash">🚗</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — DoorDash</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.ubereats.com/search?q=buns+on+fire+glendale+heights" target="_blank">
+      <span class="btn-icon uber">🛵</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — Uber Eats</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.grubhub.com/search?queryText=buns+on+fire+glendale+heights" target="_blank">
+      <span class="btn-icon grubhub">🍔</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — Grubhub</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BUFFALO GROVE -->
+  <p class="section-label">Buffalo Grove, IL</p>
+  <div class="location-group">
+    <p class="loc-name">Buffalo Grove</p>
+    <p class="loc-addr">466 W Half Day Road, Buffalo Grove, IL · (630) 326-5105</p>
+
+    <a class="link-btn" href="https://www.toasttab.com/local/order/buns-on-fire-466-west-half-day-road" target="_blank">
+      <span class="btn-icon toast">🔥</span>
+      <span class="btn-text">
+        <span class="btn-title">Order Pickup — Toast</span>
+        <span class="btn-sub">Direct from us · No extra fees</span>
+      </span>
+      <span class="btn-badge badge-best">Best Value</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.doordash.com/search/store/buns+on+fire+buffalo+grove" target="_blank">
+      <span class="btn-icon doordash">🚗</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — DoorDash</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.ubereats.com/search?q=buns+on+fire+buffalo+grove" target="_blank">
+      <span class="btn-icon uber">🛵</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — Uber Eats</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.grubhub.com/search?queryText=buns+on+fire+buffalo+grove" target="_blank">
+      <span class="btn-icon grubhub">🍔</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — Grubhub</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BROOKFIELD -->
+  <p class="section-label">Brookfield, WI</p>
+  <div class="location-group">
+    <p class="loc-name">Brookfield, WI</p>
+    <p class="loc-addr">17395 W Bluemound Rd, Brookfield, WI · (262) 372-2750</p>
+
+    <a class="link-btn" href="https://toast.app/r/buns-on-fire-brookfield-17395-w-bluemound-rd/order?diningOption=pickup&utm_source=toast.app" target="_blank">
+      <span class="btn-icon toast">🔥</span>
+      <span class="btn-text">
+        <span class="btn-title">Order Pickup — Toast</span>
+        <span class="btn-sub">Direct from us · No extra fees</span>
+      </span>
+      <span class="btn-badge badge-best">Best Value</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.doordash.com/search/store/buns+on+fire+brookfield+wi" target="_blank">
+      <span class="btn-icon doordash">🚗</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — DoorDash</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.ubereats.com/search?q=buns+on+fire+brookfield+wi" target="_blank">
+      <span class="btn-icon uber">🛵</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — Uber Eats</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.grubhub.com/search?queryText=buns+on+fire+brookfield+wi" target="_blank">
+      <span class="btn-icon grubhub">🍔</span>
+      <span class="btn-text">
+        <span class="btn-title">Delivery — Grubhub</span>
+        <span class="btn-sub">Third-party delivery · Fees may apply</span>
+      </span>
+      <span class="btn-badge badge-fee">+Fees</span>
+      <span class="btn-arrow">›</span>
+    </a>
+  </div>
+
+  <a class="back-link" href="index.html">← Back to bunsonfire.com</a>
+
+</div>
+</body>
+</html>

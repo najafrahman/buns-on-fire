@@ -4,5 +4,6 @@ deployment:
     - export DEPLOYPATH=/home/tvwjlayt/public_html/
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp contact.html $DEPLOYPATH
+    - /bin/cp order.html $DEPLOYPATH
     - /bin/cp -r assets $DEPLOYPATH
     - /bin/cp -r media_web $DEPLOYPATH
